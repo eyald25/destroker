@@ -1,10 +1,13 @@
 angular.module('motion.service', [])
 
-    .factory('MotionService', function($state, $cordovaDeviceMotion) {
+    .factory('MotionService', function($state, $timeout, $cordovaDeviceMotion) {
 // Might use a resource here that returns a JSON array
 
       return {
-        init : function(){
+        init : function(seconds){
+          var start = performance.now();
+          var firstIteration = true;
+
           document.addEventListener("deviceready", function () {
 
             $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
@@ -27,7 +30,11 @@ angular.module('motion.service', [])
                 var Z = result.z;
                 var timeStamp = result.timestamp;
 
-                $state.go('/ta1b/dash');
+                var currTime = performance.now();
+                if ((currTime - start > 1000 * seconds) && (firstIteration)) {
+                  $state.go('tab.fast');
+                  firstIteration = false;
+                }
               });
 
           }, false);
