@@ -1,9 +1,21 @@
-<ion-view view-title="Account">
-  <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+<ion-view view-title="Profile">
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Name</span>
+        <input ng-model="profile.name" type="text" placeholder="Enter your full name">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Emergency Number</span>
+        <input ng-model="profile.emergencyNumber" type="number" placeholder="Enter a number to call in case of emergency">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">National Emergency Number</span>
+        <input ng-model="profile.nationalEmergencyNumber" type="number" placeholder="e.g. 911">
+      </label>
+    </div>
+    <button ng-class="saveProfile()" class="button button-block button-calm">
+      Save
+    </button>
   </ion-content>
 </ion-view>

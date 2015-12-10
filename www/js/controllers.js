@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['profile.service'])
 
 .controller('DashCtrl', function($scope, $cordovaDeviceMotion) {
  })
@@ -22,8 +22,8 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('AccountCtrl', function($scope, ProfileService) {
+  $scope.saveProfile = function(){
+    ProfileService.saveProfile($scope.profile);
+  }
 });
