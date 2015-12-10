@@ -1,7 +1,8 @@
 angular.module('starter.controllers', ['profile.service'])
 
-.controller('DashCtrl', function($scope, $cordovaDeviceMotion) {
- })
+.controller('DashCtrl', function($scope) {})
+
+.controller('FastCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called

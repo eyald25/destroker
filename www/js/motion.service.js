@@ -2,30 +2,35 @@ angular.module('motion.service', [])
 
     .factory('MotionService', function($state, $cordovaDeviceMotion) {
 // Might use a resource here that returns a JSON array
-    document.addEventListener("deviceready", function () {
 
-      $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
+      return {
+        init : function(){
+          document.addEventListener("deviceready", function () {
 
-      }, function(err) {
-        // An error occurred. Show a message to the user
-      });
+            $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
 
-      var options = { frequency: 2000 };
+            }, function(err) {
+              // An error occurred. Show a message to the user
+            });
 
-      var watch = $cordovaDeviceMotion.watchAcceleration(options);
-      watch.then(
-        null,
-        function(error) {
-          // An error occurred
-        },
-        function(result) {
-          var X = result.x;
-          var Y = result.y;
-          var Z = result.z;
-          var timeStamp = result.timestamp;
+            var options = { frequency: 2000 };
 
-          //$state.go('/ta1b/dash');
-        });
+            var watch = $cordovaDeviceMotion.watchAcceleration(options);
+            watch.then(
+              null,
+              function(error) {
+                // An error occurred
+              },
+              function(result) {
+                var X = result.x;
+                var Y = result.y;
+                var Z = result.z;
+                var timeStamp = result.timestamp;
 
-    }, false);
+                $state.go('/ta1b/dash');
+              });
+
+          }, false);
+        }
+      };
   });

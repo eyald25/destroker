@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'motion.service', 'ngCordova'])
 
-.run(function($ionicPlatform, $cordovaDeviceMotion) {
+.run(function($ionicPlatform, MotionService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    MotionService.init();
   });
 })
 
@@ -68,6 +70,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
       }
     })
 
+
+  .state('tab.fast', {
+    url: '/fast',
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/tab-fast.html',
+        controller: 'FastCtrl'
+      }
+    }
+  })
+
   .state('tab.account', {
     url: '/account',
     views: {
@@ -78,7 +91,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     }
   });
 
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise(G);
+  $urlRouterProvider.otherwise('/tab/account');
 
 });
