@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
 
     var $currAccelerator;
-    MotionService.init(10);
+    MotionService.init(1000);
   });
 })
 
