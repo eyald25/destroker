@@ -20,7 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.styleDefault();
     }
 
-    MotionService.init(10);
+    MotionService.init(10000);
   });
 })
 

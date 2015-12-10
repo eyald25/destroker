@@ -1,4 +1,24 @@
 /* Empty. Add your own CSS if you like */
+.stylish {
+  display: block;
+  width: 300px;
+  height: 300px;
+  border-radius: 200px;
+  border: 4px double #ccc;
+  font-size: 120px;
+  color: #666;
+  line-height: 250px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #fff;
+  background: #ddd
+}
+
+.stylish:hover {
+  border: 4px double #bbb;
+  color: #aaa;
+  text-decoration: none;
+  background: #e6e6e6
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
