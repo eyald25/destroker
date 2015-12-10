@@ -3,18 +3,18 @@
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Name</span>
-        <input type="text" placeholder="Enter your full name">
+        <input ng-model="profile.name" type="text" placeholder="Enter your full name">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Emergency Number</span>
-        <input type="number" placeholder="Enter a number to call in case of emergency">
+        <input ng-model="profile.emergencyNumber" type="number" placeholder="Enter a number to call in case of emergency">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">National Emergency Number</span>
-        <input type="number" placeholder="e.g. 911">
+        <input ng-model="profile.nationalEmergencyNumber" type="number" placeholder="e.g. 911">
       </label>
     </div>
-    <button class="button button-block button-calm">
+    <button ng-class="saveProfile()" class="button button-block button-calm">
       Save
     </button>
   </ion-content>
