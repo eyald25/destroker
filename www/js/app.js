@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'motion.service', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'motion.service', 'ngCordova','timer'])
 
 .run(function($ionicPlatform, MotionService) {
   $ionicPlatform.ready(function() {
@@ -20,8 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.styleDefault();
     }
 
-    var $currAccelerator;
-    MotionService.init(1000);
+    MotionService.init(10);
   });
 })
 
@@ -78,6 +77,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       'tab-account': {
         templateUrl: 'templates/tab-fast.html',
         controller: 'FastCtrl'
+      }
+    }
+  })
+
+  .state('tab.alert', {
+    url: '/alert',
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/tab-alert.html',
+        controller: 'CountdownCtrl'
       }
     }
   })

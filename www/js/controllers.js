@@ -4,6 +4,29 @@ angular.module('starter.controllers', ['profile.service'])
 
 .controller('FastCtrl', function($scope) {})
 
+.controller('CountdownCtrl', function($scope,$state,$timeout) {
+
+  $timeout(function () {
+    $state.go('tab.fast');
+  }, 1000 * 10);
+
+  //$scope.countdown = 10;
+  //$timeout(function () {
+  //
+  //
+  //
+  //}, 1000);
+  //$scope.countdown = 9;
+  //
+  //$scope.countdownPickerObject = {
+  //  useSeconds: false,
+  //  value: $scope.countdown,
+  //  callback: function (val) {
+  //    countdownPickerCallback(val);
+  //  }
+  //};
+})
+
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.

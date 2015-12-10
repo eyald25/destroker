@@ -32,7 +32,7 @@ angular.module('motion.service', [])
 
                 var currTime = performance.now();
                 if ((currTime - start > 1000 * seconds) && (firstIteration)) {
-                  $state.go('tab.fast');
+                  $state.go('tab.alert');
                   firstIteration = false;
                 }
               });
