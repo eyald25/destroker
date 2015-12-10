@@ -24,7 +24,7 @@ angular.module('motion.service', [])
           var Z = result.z;
           var timeStamp = result.timestamp;
 
-          $state.go('/ta1b/dash');
+          //$state.go('/ta1b/dash');
         });
 
     }, false);
