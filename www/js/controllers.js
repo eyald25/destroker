@@ -1,8 +1,24 @@
 angular.module('starter.controllers', ['profile.service'])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope) {
 
-.controller('FastCtrl', function($scope) {})
+  })
+
+.controller('FastCtrl', function($scope, ProfileService) {
+    $scope.sentence = 'Destroker is one hell of an app';
+
+    $scope.send = function(){
+      if ($scope.answer && $scope.sentence === $scope.answer)
+      {
+
+      }
+      else
+      {
+        document.location.href = 'tel:' + ProfileService.getProfile().emergencyNumber;
+      }
+    }
+
+  })
 
 .controller('CountdownCtrl', function($scope,$state,$timeout) {
 
@@ -10,7 +26,7 @@ angular.module('starter.controllers', ['profile.service'])
     $state.go('tab.fast');
   }, 1000 * 10);
 
-  //$scope.countdown = 10;
+  //$scope.countdown = 10;s
   //$timeout(function () {
   //
   //
@@ -46,8 +62,13 @@ angular.module('starter.controllers', ['profile.service'])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope, ProfileService) {
-  $scope.saveProfile = function(){
-    ProfileService.saveProfile($scope.profile);
-  }
+.controller('SignupCtrl', function($scope, $stateParams) {
+
+})
+
+.controller('AccountCtrl', function($scope, ProfileService, MotionService) {
+
+
+    $scope.profile = ProfileService.getProfile();
+    MotionService.init(10);
 });

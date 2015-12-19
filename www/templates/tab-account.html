@@ -1,21 +1,74 @@
-<ion-view view-title="Profile">
-  <ion-content class="padding">
-    <div class="list">
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Name</span>
-        <input ng-model="profile.name" type="text" placeholder="Enter your full name">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Emergency Number</span>
-        <input ng-model="profile.emergencyNumber" type="number" placeholder="Enter a number to call in case of emergency">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">National Emergency Number</span>
-        <input ng-model="profile.nationalEmergencyNumber" type="number" placeholder="e.g. 911">
-      </label>
+<ion-view class=""  view-title="Profile">
+
+  <ion-content class="profile-view own-profile profile-content scroll-content ionic-scroll  has-header"><div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+    <br>
+    <div class="row profile-data">
+
+      <div class="col">
+        <div class="profile-slides slider" on-slide-changed="slideHasChanged($index)" style="visibility: visible;"><div class="slider-slides"  style="width: 640px;">
+          <ion-slide class="slider-slide" data-index="0" style="width: 400px; left: 0px; transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+            <div class="row slide-content">
+              <div class="col col-center user-data">
+                <!-- We need a wrapper with width set for the preload image directive -->
+                <div class="user-image-outer">
+                  <img class="user-image" helper-class="rounded-image" src="img/max.png" spinner-on-load="">
+
+                </div>
+                <h2 class="user-name">{{profile.name}}</h2>
+              </div>
+            </div>
+          </ion-slide>
+          <ion-slide class="slider-slide" data-index="1" style="width: 320px; left: -320px; transition-duration: 0ms; transform: translate(320px, 0px) translateZ(0px);">
+            <div class="row slide-content">
+              <div class="col col-center user-data">
+                <p class="user-resume ng-binding">
+
+                </p>
+              </div>
+            </div>
+          </ion-slide>
+        </div><div class="slider-pager"><!-- ngRepeat: slide in numSlides() track by $index --><span class="slider-pager-page active" ng-repeat="slide in numSlides() track by $index" ng-class="{active: $index == currentSlide}" ng-click="pagerClick($index)"><i class="icon ion-record"></i></span><!-- end ngRepeat: slide in numSlides() track by $index --><span class="slider-pager-page" ng-repeat="slide in numSlides() track by $index" ng-class="{active: $index == currentSlide}" ng-click="pagerClick($index)"><i class="icon ion-record"></i></span><!-- end ngRepeat: slide in numSlides() track by $index --></div></div>
+      </div>
     </div>
-    <button ng-class="saveProfile()" class="button button-block button-calm">
-      Save
-    </button>
-  </ion-content>
+    <div class="row user-interactions">
+      <div class="col">
+        <!-- ngIf: !myProfile -->
+        <!-- ngIf: myProfile --><div class="row split-actions" ng-if="myProfile">
+        <div class="col">
+          <button class="button button-block icon-left ion-gear-a settings-button" ui-sref="app.settings" href="#/app/settings">
+            Settings
+          </button>
+        </div>
+      </div><!-- end ngIf: myProfile -->
+        <div class="row split-actions">
+          <div class="col user-interaction">
+            <p>
+              <a class="user-interaction-tab" ng-class="{active: ('app.profile.posts' | includedByState)}" nav-transition="none" ng-click="getUserPosts(user._id)" role="tab"><b class="ng-binding"></b>45-54</a>
+            </p>
+          </div>
+          <div class="col user-interaction">
+            <p>
+              <a class="user-interaction-tab" ng-class="{active: ('app.profile.likes' | includedByState)}" nav-transition="none" ng-click="getUserLikes( user._id)" role="tab"><b class="ng-binding"></b>Male</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ion-nav-view class="profile-sub-views view-container" name="profileContent" nav-view-transition="ios" nav-view-direction="none" nav-swipe=""><ion-view class="profile-posts pane" view-title="Profile" nav-view="active" style="opacity: 1; transform: translate3d(0%, 0px, 0px);">
+        <div class="list card">
+
+          <a href="#" class="item item-icon-left">
+            <i class="icon ion-person-stalker"></i>
+            {{profile.emergencyNumber}}
+          </a>
+
+          <a href="#" class="item item-icon-left">
+            <i class="icon ion-help-buoy"></i>
+            101
+          </a>
+
+
+      </div>
+    </ion-view></ion-nav-view>
+  </div><div class="scroll-bar scroll-bar-v"><div class="scroll-bar-indicator scroll-bar-fade-out" style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px;"></div></div></ion-content>
 </ion-view>
